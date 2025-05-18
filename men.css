@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f3f4f6;
+  color: #333;
+}
+
+.container {
+  display:flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(50, 3, 3, 0.71);
+  position: sticky;
+  top: 0;
+  
+  z-index: 999;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+    background-image:url("kids.shoes/logo.png");
+  display: flex;
+  align-items:center;
+  gap: 8px;
+  font-size: 30px;
+  font-family:'Times New Roman', Times, serif;
+  font-weight: bold;
+  color:whitesmoke;
+}
+
+.logo img {
+  height: 60px;
+  width:fit-content;
+  
+  
+}
+
+.search-input {
+  padding: 0.5rem;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Main Content Layout */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+  }
+}
+
+/* Sidebar Filters */
+.sidebar {
+  flex: 1;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 240px;
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+}
+
+.filter-section {
+  margin-bottom: 1rem;
+}
+
+.filter-section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.color-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.color.black { background: black; }
+.color.red { background: rgb(189, 184, 184); }
+.color.pink { background: pink; }
+.color.brown { background: saddlebrown; }
+
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.size-grid span {
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  text-align: center;
+  border-radius: 4px;
+}
+
+/* Product Grid */
+/* Product Grid - 5x2 Layout using Flexbox */
+.product-grid {
+  flex: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+
+
+
+}
+
+.product-card {
+  flex: 0 0 calc(33.33% - 0.8rem); /* 3 per row */
+  max-width: calc(33.33% - 0.8rem);
+}
+
+
+@media (max-width: 1024px) {
+  .product-card {
+    flex: 0 0 calc(33.33% - 1rem);
+    max-width: calc(33.33% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0.5rem;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.product-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+
+}
+
+.product-card .info {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: #e11d48;
+  margin-top: 0.25rem;
+}
+
+.badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background-color: #e11d48;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+}

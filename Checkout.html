@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="Checkout.css" />
+</head>
+
+</head>
+<body>
+  <!-- Top Banner -->
+
+
+  <!-- Header and Navigation -->
+  <header>
+    <link rel="stylesheet" href="index.html" />
+     <link rel="stylesheet" href="styles.css" />
+    
+    <div class="logo">
+      <a href="index.html"class="logo link"> 
+
+      Spendless Shoes
+      <img src="/kids.shoes/logo.png" alt="Spendless shoes Logo"/>
+      </a> 
+ </div>
+      
+    <nav>
+      <ul>
+         <li><a href="index.html">Homepage</a></li>
+        <li><a href="women.html">Women</a></li>
+        <li><a href="men.html">Men</a></li>
+        <li><a href="kids.html">Kids</a></li>
+
+      </ul>
+    </nav>
+  
+    
+  </header>
+
+
+
+
+
+<body>
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <form class="checkout-form">
+      <div class="form-section">
+        <h3>Billing Information</h3>
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required />
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required />
+
+        <div class="row">
+          <div class="col">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" required />
+          </div>
+          <div class="col">
+            <label for="zip">ZIP</label>
+            <input type="text" id="zip" name="zip" required />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Payment Details</h3>
+        <label for="cardname">Name on Card</label>
+        <input type="text" id="cardname" name="cardname" required />
+
+        <label for="cardnumber">Card Number</label>
+        <input type="text" id="cardnumber" name="cardnumber" required />
+
+        <div class="row">
+          <div class="col">
+            <label for="exp">Expiry Date</label>
+            <input type="text" id="exp" name="exp" placeholder="MM/YY" required />
+          </div>
+          <div class="col">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" required />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</body>
+</html>
