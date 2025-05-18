@@ -94,6 +94,39 @@
 
       <button type="submit">Place Order</button>
     </form>
+  <!-- Add this inside <body> and before </body> tag, after your form -->
+
+<div class="cart-section">
+  <h3>Your Cart</h3>
+  <ul id="cart-items">
+    <!-- Example items (replace or populate dynamically as needed) -->
+    <li data-price="49.99">Sneakers - $49.99</li>
+    <li data-price="29.99">Sandals - $29.99</li>
+    <li data-price="19.99">Socks - $19.99</li>
+  </ul>
+  <div>
+    <strong>Total Price: $<span id="total-price">0.00</span></strong>
   </div>
+  <button id="charge-btn" type="button">Charge</button>
+</div>
+
+<script>
+  function calculateTotal() {
+    let total = 0;
+    document.querySelectorAll('#cart-items li').forEach(function(item) {
+      total += parseFloat(item.getAttribute('data-price'));
+    });
+    document.getElementById('total-price').innerText = total.toFixed(2);
+  }
+
+  // Calculate total on page load
+  calculateTotal();
+
+  // Action for charge button (customize as needed)
+  document.getElementById('charge-btn').addEventListener('click', function() {
+    alert('Charged: $' + document.getElementById('total-price').innerText);
+    // You can put your payment logic here.
+  });
+</script>
 </body>
 </html>
