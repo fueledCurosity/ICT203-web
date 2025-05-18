@@ -61,5 +61,36 @@ body {
   background-color: #45a049;
 }
 
- <
+ /* Base styles (for desktop/laptop by default) */
+.checkout-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 32px;
+  font-size: 1.1rem;
+}
+
+/* Responsive styles for tablets and smaller screens */
+@media (max-width: 1024px) {
+  .checkout-container {
+    max-width: 90%;
+    padding: 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+  .checkout-container {
+    max-width: 98%;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .checkout-form input,
+  .checkout-form button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 
