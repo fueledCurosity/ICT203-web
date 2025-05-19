@@ -17,148 +17,189 @@
     </div>
   </header>
 
-
   <header>
-    <div class="logo">Spendless Shoes <img src="kids.shoes/logo.png" alt ="logo"
-    >
-
-</div>
+    <div class="logo">Spendless Shoes <img src="kids.shoes/logo.png" alt="logo"></div>
     <nav>
       <ul>
-       <li><a href="index.html">Homepage</a></li>
+        <li><a href="index.html">Homepage</a></li>
         <li><a href="women.html">Women</a></li>
         <li><a href="Men.html">Men</a></li>
         <li><a href="Kids.html">Kids</a></li>
         <li><a href="Checkout.html">Checkout</a></li>
-
       </ul>
     </nav>
+  </header>
+
+  <!-- Sidebar Filters -->
+  <aside class="sidebar">
+    <h2>Filters</h2>
+
+    <div class="filter-section">
+      <h3>Categories</h3>
+      <label><input type="checkbox" /> Boots</label>
+      <label><input type="checkbox" /> Sneakers</label>
+      <label><input type="checkbox" /> Flats</label>
+      <label><input type="checkbox" /> Heels</label>
+    </div>
+
+    <div class="filter-section">
+      <h3>Color</h3>
+      <div class="color-options">
+        <span class="product-card"></span>
+        <span class="color red"></span>
+        <span class="color pink"></span>
+        <span class="color brown"></span>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3>Size</h3>
+      <div class="size-grid">
+        <span>5</span><span>6</span><span>7</span><span>8</span>
+        <span>9</span><span>10</span>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h3>Price</h3>
+      <label><input type="heeled Boot  " /> $0 - $50</label>
+      <label><input type="checkbox" /> $51 - $100</label>
+      <label><input type="checkbox" /> $100+</label>
+    </div>
+  </aside>
+
+  <!-- Product Grid -->
+  <main class="product-grid">
+    <!-- Product Card -->
+    <div class="product-card">
+      <img src="Women/betshoes.jpg" alt="betShoe" />
+      <span class="badge sale">Sale</span>
+      <h3>Heeled Boot</h3>
+      <p class="info">Low Stock</p>
+      <p class="price">$59.99</p>
+      <button class="buy-now-btn" data-name="Heeled Boot" data-price="59.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/CasualFootwear.jpg" alt="Sneaker" />
+      <h3>CasualFootwear</h3>
+      <p class="info">Available in 3 colors</p>
+      <p class="price">$39.99</p>
+      <button class="buy-now-btn" data-name="CasualFootwear" data-price="39.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/Woman.jpg" alt="Flat Shoe" />
+      <h3>Flat Sandal</h3>
+      <p class="info">Soft Leather</p>
+      <p class="price">$29.99</p>
+      <button class="buy-now-btn" data-name="Flat Sandal" data-price="29.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/Shays shoes.jpg" alt="Heel" />
+      <h3>Shaya Shoes</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="Shaya Shoes" data-price="49.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/Women's Lacoste.jpg" alt="Heel" />
+      <h3>Women's Lacoste footwear</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="Women's Lacoste footwear" data-price="49.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/Hoka Bondi.jpg" alt="Heel" />
+      <h3>hoka Bondi shoes</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="hoka Bondi shoes" data-price="49.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/Sneakers.jpg" alt="Heel" />
+      <h3>Sneakers</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="Sneakers" data-price="49.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="stylishhill.jpg" alt="Heel" />
+      <h3>Red Heels</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="Red Heels" data-price="49.99">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="Women/heel2.jpg" alt="Heel" />
+      <h3>Heels</h3>
+      <p class="info">Limited Sizes</p>
+      <p class="price">$49.99</p>
+      <button class="buy-now-btn" data-name="Heels" data-price="49.99">Buy Now</button>
+    </div>
+  </main>
+
+  <!-- Checkout CTA Section -->
+  <div class="checkout-cta">
+    <p>Total: $<span id="total-amount">0.00</span></p>
+    <button id="checkout-button">Checkout Now</button>
   </div>
-
-    <!-- Sidebar Filters -->
-    <aside class="sidebar">
-      <h2>Filters</h2>
-
-      <div class="filter-section">
-        <h3>Categories</h3>
-        <label><input type="checkbox" /> Boots</label>
-        <label><input type="checkbox" /> Sneakers</label>
-        <label><input type="checkbox" /> Flats</label>
-        <label><input type="checkbox" /> Heels</label>
-      </div>
-
-      <div class="filter-section">
-        <h3>Color</h3>
-        <div class="color-options">
-          <span class="product-card"></span>
-          <span class="color red"></span>
-          <span class="color pink"></span>
-          <span class="color brown"></span>
-        </div>
-      </div>
-
-      <div class="filter-section">
-        <h3>Size</h3>
-        <div class="size-grid">
-          <span>5</span><span>6</span><span>7</span><span>8</span>
-          <span>9</span><span>10</span>
-        </div>
-      </div>
-
-      <div class="filter-section">
-        <h3>Price</h3>
-        <label><input type="heeled Boot  " /> $0 - $50</label>
-        <label><input type="checkbox" /> $51 - $100</label>
-        <label><input type="checkbox" /> $100+</label>
-      </div>
-    </aside>
-
-    <!-- Product Grid -->
-    <main class="product-grid">
-      <!-- Product Card -->
-      <div class="product-card">
-        <img src="Women/betshoes.jpg" alt="betShoe" />
-        <span class="badge sale">Sale</span>
-        <h3>Heeled Boot</h3>
-        <p class="info">Low Stock</p>
-        <p class="price">$59.99</p>
-      </div>
-
-      <div class="product-card">
-        <img src="Women/CasualFootwear.jpg" alt="Sneaker" />
-        <h3>CasualFootwear</h3>
-        <p class="info">Available in 3 colors</p>
-        <p class="price">$39.99</p>
-      </div>
-
-      <div class="product-card">
-        <img src="Women/Woman.jpg" alt="Flat Shoe" />
-        <h3>Flat Sandal</h3>
-        <p class="info">Soft Leather</p>
-        <p class="price">$29.99</p>
-      </div>
-
-      <div class="product-card">
-        <img src="Women/Shays shoes.jpg" alt="Heel" />
-        <h3>Shaya Shoes</h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-    
-  </div>
-
-
-
-
-  <div class="product-card">
-        <img src="Women/Women's Lacoste.jpg" alt="Heel" />
-        <h3>Women's Lacoste footwear </h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-    
-
-      <div class="product-card">
-        <img src="Women/Hoka Bondi.jpg" alt="Heel" />
-        <h3>hoka Bondi shoes  </h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-    
-  <div class="product-card">
-        <img src="Women/Sneakers.jpg" alt="Heel" />
-        <h3>Sneakers</h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-    
-  </div>
-
-
-  <div class="product-card">
-        <img src="stylishhill.jpg" alt="Heel" />
-        <h3>Red Heels</h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-  
-  </div>
-
-<div class="product-card">
-        <img src="Women/heel2.jpg" alt="Heel" />
-        <h3>Heels</h3>
-        <p class="info">Limited Sizes</p>
-        <p class="price">$49.99</p>
-      </div>
-    
-  </div>
-
-  
 
   <!-- Footer -->
   <footer class="footer">
     &copy; 2025 Spendless Shoes. All rights reserved.
   </footer>
 
+  <!-- Cart JavaScript -->
+  <script>
+    // Initialize total amount and cart
+    let totalAmount = 0;
+    let cart = [];
+
+    // Try to load existing cart from localStorage
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+      // Recalculate total from cart
+      totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    }
+
+    // Function to update total amount
+    function updateTotal(amount) {
+      totalAmount += amount;
+      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    }
+
+    // Function to add item to cart and save to localStorage
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateTotal(price);
+    }
+
+    // Add event listeners to all "Buy Now" buttons
+    document.querySelectorAll('.buy-now-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const price = parseFloat(button.getAttribute('data-price'));
+        addToCart(name, price);
+      });
+    });
+
+    // Checkout button functionality
+    document.getElementById('checkout-button').addEventListener('click', () => {
+      if (totalAmount > 0) {
+        // Redirect to checkout.html
+        window.location.href = 'Checkout.html';
+      } else {
+        alert('Your cart is empty.');
+      }
+    });
+  </script>
 </body>
-</html>
