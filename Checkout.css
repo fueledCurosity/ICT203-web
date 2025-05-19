@@ -9,6 +9,11 @@
 }
 
 html, body {
+  backgrond-images:url('kids.shoes/bannerdown.png');
+  background-size:cover;
+  background-position: center center; 
+  background-repeat:no-repeat;
+  backgound-attactment:fixed;
   font-family: 'Segoe UI', Arial, sans-serif;
   background: #f7f7f7;
   color: #222;
