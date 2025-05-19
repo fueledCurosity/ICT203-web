@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +11,9 @@ body {
   color: #333;
 }
 
+/* Container */
 .container {
-  display:flex;
+  display: flex;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
@@ -23,7 +25,6 @@ body {
   box-shadow: 0 2px 4px rgba(50, 3, 3, 0.71);
   position: sticky;
   top: 0;
-  
   z-index: 999;
 }
 
@@ -34,21 +35,19 @@ body {
 }
 
 .logo {
-    background-image:url("kids.shoes/logo.png");
+  background-image: url("kids.shoes/logo.png");
   display: flex;
-  align-items:center;
+  align-items: center;
   gap: 8px;
   font-size: 30px;
-  font-family:'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
-  color:whitesmoke;
+  color: whitesmoke;
 }
 
 .logo img {
   height: 60px;
-  width:fit-content;
-  
-  
+  width: auto;
 }
 
 .search-input {
@@ -124,7 +123,6 @@ body {
 }
 
 /* Product Grid */
-/* Product Grid - 5x2 Layout using Flexbox */
 .product-grid {
   flex: 10;
   display: flex;
@@ -132,39 +130,11 @@ body {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
-
-
-
 }
 
 .product-card {
-  flex: 0 0 calc(33.33% - 0.8rem); /* 3 per row */
+  flex: 0 0 calc(33.33% - 0.8rem);
   max-width: calc(33.33% - 0.8rem);
-}
-
-
-@media (max-width: 1024px) {
-  .product-card {
-    flex: 0 0 calc(33.33% - 1rem);
-    max-width: calc(33.33% - 1rem);
-  }
-}
-
-@media (max-width: 768px) {
-  .product-card {
-    flex: 0 0 calc(50% - 1rem);
-    max-width: calc(50% - 1rem);
-  }
-}
-
-@media (max-width: 480px) {
-  .product-card {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-}
-
-.product-card {
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -187,7 +157,6 @@ body {
 .product-card h3 {
   font-size: 0.95rem;
   font-weight: 600;
-
 }
 
 .product-card .info {
@@ -212,10 +181,80 @@ body {
   border-radius: 4px;
 }
 
+/* Buy Now Button */
+.buy-now-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #e11d48;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #c10c3b;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .product-card {
+    flex: 0 0 calc(33.33% - 1rem);
+    max-width: calc(33.33% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex: 0 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 /* Footer */
 .footer {
   text-align: center;
   padding: 2rem;
   font-size: 0.9rem;
   color: #666;
+}
+
+/* Checkout CTA Section */
+.checkout-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #e11d48;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+.checkout-cta button {
+  background-color: #fff;
+  color: #e11d48;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-cta button:hover {
+  background-color: #f8d7da;
 }
