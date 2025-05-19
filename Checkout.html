@@ -80,11 +80,22 @@
 
     <section class="cart-section" aria-label="Your shopping cart">
       <h3>Your Cart</h3>
-      <ul id="cart-items">
-        <!-- Example items (replace or populate dynamically as needed) -->
-        <li data-price="49.99">Sneakers - $49.99</li>
-        <li data-price="29.99">Sandals - $29.99</li>
-        <li data-price="19.99">Socks - $19.99</li>
+    
+        <ul id="cart-items"></ul>
+<p>Total: $<span id="checkout-total">0.00</span></p>
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let total = 0;
+  const cartItems = document.getElementById('cart-items');
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item.name + ' - $' + item.price.toFixed(2);
+    cartItems.appendChild(li);
+    total += item.price;
+  });
+  document.getElementById('checkout-total').textContent = total.toFixed(2);
+</script>
+
       </ul>
       <div>
         <strong>Total Price: $<span id="total-price">0.00</span></strong>
