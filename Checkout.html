@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,67 @@
   <title>Checkout - Spendless Shoes</title>
   <link rel="stylesheet" href="checkout.css">
   <style>
+    .header {
+      background: #f7f7f7;
+      padding: 20px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 2em;
+      color: #222;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      vertical-align: middle;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding-left: 0;
+      gap: 18px;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav ul li a:hover, nav ul li a:focus {
+      background: #ffe4b5;
+      color: #b86b23;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 16px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px #0001;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding: 16px 0;
+      color: #888;
+      background: #f7f7f7;
+      border-top: 1px solid #ddd;
+    }
     .billing-section { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;}
     .billing-section label { display:block; margin-bottom: 5px;}
     .billing-section input { margin-bottom: 15px; width: 100%; max-width: 320px;}
@@ -16,17 +78,27 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Checkout</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Homepage</a></li>
-        <li><a href="women.html">Women</a></li>
-        <li><a href="Men.html">Men</a></li>
-        <li><a href="Kids.html">Kids</a></li>
-      </ul>
-    </nav>
+  <!-- Header with logo and title -->
+  <header class="header">
+    <div class="container header-inner">
+      <span class="logo">
+        <img src="logo.png" alt="Spendless Shoes Logo">
+        Spendless Shoes
+      </span>
+      <span style="font-size:1.3em; color:#b86b23; font-weight:bold;">CHECKOUT</span>
+    </div>
   </header>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="women.html">Women</a></li>
+      <li><a href="Men.html">Men</a></li>
+      <li><a href="Kids.html">Kids</a></li>
+      <li><a href="Checkout.html">Checkout</a></li>
+    </ul>
+  </nav>
 
   <main>
     <h2>Your Cart</h2>
