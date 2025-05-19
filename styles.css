@@ -230,5 +230,29 @@ nav ul li a {
   .social-icons a {
     margin: 0 5px;
   }
+
+  .cta-btn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+}
+.cta-btn:hover {
+  background: #e65100;
+}
+
+@media (max-width: 600px) {
+  .cta-btn {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+}
 }
 
