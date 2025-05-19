@@ -118,35 +118,17 @@
   </footer>
 
   <!-- JavaScript -->
-  <script>
-    // Initialize total amount
-    let totalAmount = 0;
-
-    // Function to update total amount
-    function updateTotal(amount) {
-      totalAmount += amount;
-      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
-    }
-
-    // Add event listeners to all "Buy Now" buttons
-    document.querySelectorAll('.buy-now-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const price = parseFloat(button.getAttribute('data-price'));
-        updateTotal(price);
-        // Optionally, add product details to a cart array or display
-      });
-    });
-
-    // Checkout button functionality
-    document.getElementById('checkout-button').addEventListener('click', () => {
-      if (totalAmount > 0) {
-        alert('Proceeding to checkout...');
-        // Redirect to checkout page or handle checkout process
-      } else {
-        alert('Your cart is empty.');
-      }
-    });
-  </script>
-
-</body>
-</html>
+ <ul id="cart-items"></ul>
+<p>Total: $<span id="checkout-total">0.00</span></p>
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let total = 0;
+  const cartItems = document.getElementById('cart-items');
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item.name + ' - $' + item.price.toFixed(2);
+    cartItems.appendChild(li);
+    total += item.price;
+  });
+  document.getElementById('checkout-total').textContent = total.toFixed(2);
+</script>
