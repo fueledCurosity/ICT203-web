@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Women's Shoes - Spendless</title>
+  <title>Kids' Shoes - Spendless</title>
   <link rel="stylesheet" href="kids.css"/>
 </head>
 <body>
@@ -12,24 +12,26 @@
   <header class="header">
     <div class="container header-inner">
       <h1 class="logo">Spendless Shoes</h1>
-      <P>KIDS</P>
+      <p>KIDS</p>
       <input type="text" class="search-input" placeholder="Search..." />
     </div>
   </header>
 
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Homepage</a></li>
+      <li><a href="women.html">Women</a></li>
+      <li><a href="Men.html">Men</a></li>
+      <li><a href="Checkout.html">Checkout</a></li>
+    </ul>
+  </nav>
 
-  <header>
-    <div class="logo">Spendless Shoes <img src="kids.shoes/logo.png" alt ="logo"
-   
-    >
-</div>
   <!-- Main Content -->
   <div class="container main-content">
-    
     <!-- Sidebar Filters -->
     <aside class="sidebar">
       <h2>Filters</h2>
-
       <div class="filter-section">
         <h3>Categories</h3>
         <label><input type="checkbox" /> Boots</label>
@@ -37,7 +39,6 @@
         <label><input type="checkbox" /> Flats</label>
         <label><input type="checkbox" /> Heels</label>
       </div>
-
       <div class="filter-section">
         <h3>Color</h3>
         <div class="color-options">
@@ -47,7 +48,6 @@
           <span class="color brown"></span>
         </div>
       </div>
-
       <div class="filter-section">
         <h3>Size</h3>
         <div class="size-grid">
@@ -55,7 +55,6 @@
           <span>9</span><span>10</span>
         </div>
       </div>
-
       <div class="filter-section">
         <h3>Price</h3>
         <label><input type="checkbox" /> $0 - $50</label>
@@ -73,6 +72,7 @@
         <h3>comfy canvas shoes</h3>
         <p class="info">Low Stock</p>
         <p class="price">$59.99</p>
+        <button class="buy-now-btn" data-name="comfy canvas shoes" data-price="59.99">Buy Now</button>
       </div>
 
       <div class="product-card">
@@ -80,6 +80,7 @@
         <h3>plainBlackWhiteCasualSneakersChild</h3>
         <p class="info">Available in 3 colors</p>
         <p class="price">$39.99</p>
+        <button class="buy-now-btn" data-name="plainBlackWhiteCasualSneakersChild" data-price="39.99">Buy Now</button>
       </div>
 
       <div class="product-card">
@@ -87,6 +88,7 @@
         <h3>Ralp Lauren kids shoe</h3>
         <p class="info">Soft Leather</p>
         <p class="price">$29.99</p>
+        <button class="buy-now-btn" data-name="Ralp Lauren kids shoe" data-price="29.99">Buy Now</button>
       </div>
 
       <div class="product-card">
@@ -94,57 +96,108 @@
         <h3>Cior Canvas sneaker</h3>
         <p class="info">Limited Sizes</p>
         <p class="price">$49.99</p>
+        <button class="buy-now-btn" data-name="Cior Canvas sneaker" data-price="49.99">Buy Now</button>
       </div>
 
-
-
-
-  <div class="product-card">
+      <div class="product-card">
         <img src="kidsshoes/Toddlergirls.webp" alt="Heel" />
         <h3>Toddler girls shoe</h3>
         <p class="info">Limited Sizes</p>
         <p class="price">$49.99</p>
+        <button class="buy-now-btn" data-name="Toddler girls shoe" data-price="49.99">Buy Now</button>
       </div>
 
-  <div class="product-card">
+      <div class="product-card">
         <img src="kidsshoes/OIP.jpg" alt="Heel" />
-        <h3>rezero shalp shoes </h3>
+        <h3>rezero shalp shoes</h3>
         <p class="info">Limited Sizes</p>
         <p class="price">$49.99</p>
-    
-  </div>
+        <button class="buy-now-btn" data-name="rezero shalp shoes" data-price="49.99">Buy Now</button>
+      </div>
 
-
-  <div class="product-card">
+      <div class="product-card">
         <img src="kidsshoes/Vansbig toddlershoes.webp" alt="Heel" />
         <h3>Vansbg toddler shoes</h3>
         <p class="info">Limited Sizes</p>
         <p class="price">$49.99</p>
+        <button class="buy-now-btn" data-name="Vansbg toddler shoes" data-price="49.99">Buy Now</button>
       </div>
-      
-    
-       <div class="product-card">
+
+      <div class="product-card">
         <img src="kidsshoes/Canvasshoesboys.webp" alt="Heel" />
         <h3>Canvas boys shoes</h3>
         <p class="info">canvas rekarn shoes slip on</p>
         <p class="price">$49.99</p>
+        <button class="buy-now-btn" data-name="Canvas boys shoes" data-price="49.99">Buy Now</button>
       </div>
-    
 
-  <div class="product-card">
+      <div class="product-card">
         <img src="kidsshoes/ChildrenPaintedshoes.webp" alt="Heel" />
         <h3>Children Painted comfy shoes</h3>
         <p class="info">Limited Sizes</p>
         <p class="price">$49.99</p>
-  
+        <button class="buy-now-btn" data-name="Children Painted comfy shoes" data-price="49.99">Buy Now</button>
+      </div>
     </main>
   </div>
 
+  <!-- Checkout CTA -->
+  <div class="checkout-cta">
+    <p>Total: $<span id="total-amount">0.00</span></p>
+    <button id="checkout-button">Checkout Now</button>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
     &copy; 2025 Spendless Shoes. All rights reserved.
   </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Initialize total amount and cart
+    let totalAmount = 0;
+    let cart = [];
+
+    // Try to load existing cart from localStorage
+    if (localStorage.getItem('cart')) {
+      cart = JSON.parse(localStorage.getItem('cart'));
+      // Recalculate total from cart
+      totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    }
+
+    // Function to update total amount
+    function updateTotal(amount) {
+      totalAmount += amount;
+      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    }
+
+    // Function to add item to cart and save to localStorage
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateTotal(price);
+    }
+
+    // Add event listeners to all "Buy Now" buttons
+    document.querySelectorAll('.buy-now-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const price = parseFloat(button.getAttribute('data-price'));
+        addToCart(name, price);
+      });
+    });
+
+    // Checkout button functionality
+    document.getElementById('checkout-button').addEventListener('click', () => {
+      if (totalAmount > 0) {
+        // Redirect to checkout.html
+        window.location.href = 'Checkout.html';
+      } else {
+        alert('Your cart is empty.');
+      }
+    });
+  </script>
 
 </body>
 </html>
