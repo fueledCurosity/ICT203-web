@@ -89,43 +89,49 @@
       <div id="loader" style="display:none;" aria-live="polite">Processing payment...</div>
     </section>
   </main>
+<script>
+let cart = [];
+let totalAmount = 0;
 
-  <script>
-    // Cart rendering and total calculation
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let total = 0;
-    const cartItems = document.getElementById('cart-items');
-    cart.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item.name + ' - $' + item.price.toFixed(2);
-      li.setAttribute('data-price', item.price); // For future dynamic actions
-      cartItems.appendChild(li);
-      total += item.price;
-    });
-    document.getElementById('total-price').textContent = total.toFixed(2);
+function loadCart() {
+  const cartContainer = document.getElementById('cart-items');
+  cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cartContainer.innerHTML = '';
+  totalAmount = 0;
 
-    // Input masking for card number and expiry
-    document.addEventListener('DOMContentLoaded', function () {
-      // Card number mask
-      const cardInput = document.getElementById('cardnumber');
-      if (cardInput) {
-        cardInput.addEventListener('input', function(e) {
-          let v = e.target.value.replace(/\D/g, '').substring(0,16);
-          v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
-          e.target.value = v.trim();
-        });
-      }
+  cart.forEach((item, index) => {
+    totalAmount += item.price;
+    const itemDiv = document.createElement('div');
+    itemDiv.innerHTML = `
+      ${item.name} - $${item.price.toFixed(2)}
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+    cartContainer.appendChild(itemDiv);
+  });
 
-      // Expiry date mask
-      const expInput = document.getElementById('exp');
-      if (expInput) {
-        expInput.addEventListener('input', function(e) {
-          let v = e.target.value.replace(/\D/g, '').substring(0,4);
-          if (v.length > 2) v = v.substring(0,2) + '/' + v.substring(2,4);
-          e.target.value = v;
-        });
-      }
-    });
-  </script>
+  document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  loadCart();
+}
+
+document.getElementById('checkout-button').addEventListener('click', function() {
+  if (cart.length > 0) {
+    alert('Thank you for your purchase!');
+    cart = [];
+    localStorage.removeItem('cart');
+    loadCart();
+  } else {
+    alert('Your cart is empty.');
+  }
+});
+
+window.onload = loadCart;
+</script>
+
+  
 </body>
 </html>
