@@ -87,17 +87,18 @@ nav ul li a {
   z-index: 0;
 }
 
+
 .product-grid {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
-  gap: 60px;
-  justify-content: left;
+  justify-content: center;
+  gap: 20px; /* Optional: adds space between cards */
 }
 
 .product-card {
-  width: 1000px;
-  text-align: center;
-  
+  /* If you want to control the width of each card, you can add: */
+  /* width: 250px; */
+  margin-bottom: 20px; /* Optional: adds space between rows */
 }
 
 .product-card img {
