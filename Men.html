@@ -118,17 +118,49 @@
   </footer>
 
   <!-- JavaScript -->
- <ul id="cart-items"></ul>
-<p>Total: $<span id="checkout-total">0.00</span></p>
+
 <script>
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let total = 0;
-  const cartItems = document.getElementById('cart-items');
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = item.name + ' - $' + item.price.toFixed(2);
-    cartItems.appendChild(li);
-    total += item.price;
+  // Initialize total amount and cart
+  let totalAmount = 0;
+  let cart = [];
+
+  // Try to load existing cart from localStorage
+  if (localStorage.getItem('cart')) {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    // Recalculate total from cart
+    totalAmount = cart.reduce((sum, item) => sum + item.price, 0);
+    document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+  }
+
+  // Function to update total amount
+  function updateTotal(amount) {
+    totalAmount += amount;
+    document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+  }
+
+  // Function to add item to cart and save to localStorage
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateTotal(price);
+  }
+
+  // Add event listeners to all "Buy Now" buttons
+  document.querySelectorAll('.buy-now-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.getAttribute('data-name');
+      const price = parseFloat(button.getAttribute('data-price'));
+      addToCart(name, price);
+    });
   });
-  document.getElementById('checkout-total').textContent = total.toFixed(2);
+
+  // Checkout button functionality
+  document.getElementById('checkout-button').addEventListener('click', () => {
+    if (totalAmount > 0) {
+      // Redirect to checkout.html
+      window.location.href = 'checkout.html';
+    } else {
+      alert('Your cart is empty.');
+    }
+  });
 </script>
