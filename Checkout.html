@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,23 +81,7 @@
 
     <section class="cart-section" aria-label="Your shopping cart">
       <h3>Your Cart</h3>
-    
-        <ul id="cart-items"></ul>
-<p>Total: $<span id="checkout-total">0.00</span></p>
-<script>
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let total = 0;
-  const cartItems = document.getElementById('cart-items');
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = item.name + ' - $' + item.price.toFixed(2);
-    cartItems.appendChild(li);
-    total += item.price;
-  });
-  document.getElementById('checkout-total').textContent = total.toFixed(2);
-</script>
-
-      </ul>
+      <ul id="cart-items"></ul>
       <div>
         <strong>Total Price: $<span id="total-price">0.00</span></strong>
       </div>
@@ -105,35 +90,42 @@
     </section>
   </main>
 
-  <script defer>
+  <script>
+    // Cart rendering and total calculation
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+    const cartItems = document.getElementById('cart-items');
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item.name + ' - $' + item.price.toFixed(2);
+      li.setAttribute('data-price', item.price); // For future dynamic actions
+      cartItems.appendChild(li);
+      total += item.price;
+    });
+    document.getElementById('total-price').textContent = total.toFixed(2);
+
     // Input masking for card number and expiry
     document.addEventListener('DOMContentLoaded', function () {
       // Card number mask
       const cardInput = document.getElementById('cardnumber');
-      cardInput.addEventListener('input', function(e) {
-        let v = e.target.value.replace(/\D/g, '').substring(0,16);
-        v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
-        e.target.value = v.trim();
-      });
+      if (cardInput) {
+        cardInput.addEventListener('input', function(e) {
+          let v = e.target.value.replace(/\D/g, '').substring(0,16);
+          v = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+          e.target.value = v.trim();
+        });
+      }
 
       // Expiry date mask
       const expInput = document.getElementById('exp');
-      expInput.addEventListener('input', function(e) {
-        let v = e.target.value.replace(/\D/g, '').substring(0,4);
-        if (v.length > 2) v = v.substring(0,2) + '/' + v.substring(2,4);
-        e.target.value = v;
-      });
+      if (expInput) {
+        expInput.addEventListener('input', function(e) {
+          let v = e.target.value.replace(/\D/g, '').substring(0,4);
+          if (v.length > 2) v = v.substring(0,2) + '/' + v.substring(2,4);
+          e.target.value = v;
+        });
+      }
     });
-
-    // Cart total calculation
-    function calculateTotal() {
-      let total = 0;
-      document.querySelectorAll('#cart-items li').forEach(function(item) {
-        total += parseFloat(item.getAttribute('data-price'));
-      });
-      document.getElementById('total-price').innerText = total.toFixed(2);
-    }
-    // Calculate total on page load
-    calculateTotal();
-
-      
+  </script>
+</body>
+</html>
