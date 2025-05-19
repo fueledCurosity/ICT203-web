@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout - Spendless Shoes</title>
   <link rel="stylesheet" href="checkout.css">
+  <style>
+    .billing-section { margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;}
+    .billing-section label { display:block; margin-bottom: 5px;}
+    .billing-section input { margin-bottom: 15px; width: 100%; max-width: 320px;}
+    .error { color: red; }
+    .cart-item { margin: 7px 0;}
+    .remove-btn { margin-left: 12px; color: #fff; background: #c00; border: none; border-radius: 4px; padding: 4px 10px;}
+    #final-cart-section { margin-top: 30px; }
+  </style>
 </head>
 <body>
   <header>
@@ -25,10 +34,32 @@
     <p id="empty-cart-msg" style="display:none;">Your cart is empty.</p>
     <p><strong>Total: $<span id="total-amount">0.00</span></strong></p>
     <button id="checkout-button">Show Cart</button>
+
     <div id="final-cart-section" style="display:none;">
       <h3>Items in Your Cart:</h3>
       <div id="final-cart-items"></div>
       <p><strong>Final Total: $<span id="final-total-amount">0.00</span></strong></p>
+
+      <!-- Billing Information Section -->
+      <div class="billing-section">
+        <h3>Billing Information</h3>
+        <form id="billing-form" autocomplete="off" onsubmit="return false;">
+          <label for="billing-name">Full Name*</label>
+          <input type="text" id="billing-name" required>
+          <label for="billing-email">Email*</label>
+          <input type="email" id="billing-email" required>
+          <label for="billing-address">Address*</label>
+          <input type="text" id="billing-address" required>
+          <label for="billing-card">Card Number*</label>
+          <input type="text" id="billing-card" maxlength="19" required>
+          <label for="billing-expiry">Expiry (MM/YY)*</label>
+          <input type="text" id="billing-expiry" maxlength="5" required>
+          <label for="billing-cvv">CVV*</label>
+          <input type="text" id="billing-cvv" maxlength="4" required>
+          <div id="billing-error" class="error"></div>
+        </form>
+      </div>
+
       <button id="confirm-purchase-button">Confirm Purchase</button>
     </div>
   </main>
@@ -41,7 +72,6 @@
     let cart = [];
     let totalAmount = 0;
 
-    // Render the regular cart section
     function renderCart() {
       const cartContainer = document.getElementById('cart-items');
       const emptyMsg = document.getElementById('empty-cart-msg');
@@ -70,7 +100,6 @@
       document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
     }
 
-    // Show the cart section on checkout
     function showFinalCart() {
       const finalSection = document.getElementById('final-cart-section');
       const finalCartItems = document.getElementById('final-cart-items');
@@ -109,20 +138,49 @@
       showFinalCart();
     }
 
+    function validateBilling() {
+      const name = document.getElementById('billing-name').value.trim();
+      const email = document.getElementById('billing-email').value.trim();
+      const address = document.getElementById('billing-address').value.trim();
+      const card = document.getElementById('billing-card').value.trim();
+      const expiry = document.getElementById('billing-expiry').value.trim();
+      const cvv = document.getElementById('billing-cvv').value.trim();
+      let error = '';
+
+      if (!name || !email || !address || !card || !expiry || !cvv) {
+        error = "All billing fields are required.";
+      } else if (!/^\d{16}$|^\d{4}\s\d{4}\s\d{4}\s\d{4}$/.test(card.replace(/\s+/g,''))) {
+        error = "Card number must be 16 digits (spaces optional).";
+      } else if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        error = "Expiry must be in MM/YY format.";
+      } else if (!/^\d{3,4}$/.test(cvv)) {
+        error = "CVV must be 3 or 4 digits.";
+      } else if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+        error = "Email is invalid.";
+      }
+
+      document.getElementById('billing-error').textContent = error;
+      return error === '';
+    }
+
     document.getElementById('checkout-button').addEventListener('click', function() {
       showFinalCart();
     });
 
     document.getElementById('confirm-purchase-button').addEventListener('click', function() {
-      if (cart.length > 0) {
-        alert('Thank you for your purchase!');
-        cart = [];
-        localStorage.removeItem('cart');
-        renderCart();
-        showFinalCart();
-      } else {
+      if (cart.length === 0) {
         alert('Your cart is empty.');
+        return;
       }
+      if (!validateBilling()) {
+        return;
+      }
+      alert('Thank you for your purchase!');
+      cart = [];
+      localStorage.removeItem('cart');
+      renderCart();
+      showFinalCart();
+      document.getElementById('billing-form').reset();
     });
 
     // On page load
