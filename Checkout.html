@@ -2,136 +2,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Checkout</title>
-  <link rel="stylesheet" href="Checkout.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Spendless Shoes</title>
+  <link rel="stylesheet" href="checkout.css">
 </head>
 <body>
-  <!-- Header and Navigation -->
   <header>
-    <div class="logo">
-      <a href="index.html" class="logo link" aria-label="Go to Homepage"> 
-        Spendless Shoes
-        <img src="kids.shoes/logo.png" alt="Spendless Shoes Logo"/>
-      </a> 
-    </div>
-    <nav aria-label="Main navigation">
+    <h1>Checkout</h1>
+    <nav>
       <ul>
         <li><a href="index.html">Homepage</a></li>
         <li><a href="women.html">Women</a></li>
-        <li><a href="men.html">Men</a></li>
-        <li><a href="kids.html">Kids</a></li>
+        <li><a href="Men.html">Men</a></li>
+        <li><a href="Kids.html">Kids</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div class="checkout-container">
-      <h2>Checkout</h2>
-      <form class="checkout-form" autocomplete="on">
-        <section class="form-section">
-          <h3>Billing Information</h3>
-          <label for="fullname">Full Name</label>
-          <input type="text" id="fullname" name="fullname" placeholder="John Doe" autocomplete="name" required autofocus aria-required="true" />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" required aria-required="true" />
-
-          <label for="address">Address</label>
-          <input type="text" id="address" name="address" placeholder="123 Main St" autocomplete="street-address" required aria-required="true" />
-
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" placeholder="City" autocomplete="address-level2" required aria-required="true" />
-
-          <div class="row">
-            <div class="col">
-              <label for="state">State</label>
-              <input type="text" id="state" name="state" placeholder="State" autocomplete="address-level1" required aria-required="true" />
-            </div>
-            <div class="col">
-              <label for="zip">ZIP</label>
-              <input type="text" id="zip" name="zip" placeholder="Zip Code" autocomplete="postal-code" required aria-required="true" />
-            </div>
-          </div>
-        </section>
-
-        <section class="form-section">
-          <h3>Payment Details</h3>
-          <label for="cardname">Name on Card</label>
-          <input type="text" id="cardname" name="cardname" placeholder="Name on card" autocomplete="cc-name" required aria-required="true" />
-
-          <label for="cardnumber">Card Number</label>
-          <input type="text" id="cardnumber" name="cardnumber" placeholder="1234 5678 9012 3456" autocomplete="cc-number" inputmode="numeric" maxlength="19" pattern="\d{4} \d{4} \d{4} \d{4}" required aria-required="true" />
-
-          <div class="row">
-            <div class="col">
-              <label for="exp">Expiry Date</label>
-              <input type="text" id="exp" name="exp" placeholder="MM/YY" autocomplete="cc-exp" inputmode="numeric" maxlength="5" pattern="\d{2}/\d{2}" required aria-required="true" />
-            </div>
-            <div class="col">
-              <label for="cvv">CVV</label>
-              <input type="password" id="cvv" name="cvv" placeholder="***" autocomplete="cc-csc" inputmode="numeric" maxlength="4" pattern="\d{3,4}" required aria-required="true" />
-            </div>
-          </div>
-        </section>
-        <button type="submit" aria-label="Place your order">Place Order</button>
-      </form>
-    </div>
-
-    <section class="cart-section" aria-label="Your shopping cart">
-      <h3>Your Cart</h3>
-      <ul id="cart-items"></ul>
-      <div>
-        <strong>Total Price: $<span id="total-price">0.00</span></strong>
-      </div>
-      <button id="charge-btn" type="button" aria-label="Charge your card">Charge</button>
-      <div id="loader" style="display:none;" aria-live="polite">Processing payment...</div>
-    </section>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p id="empty-cart-msg" style="display:none;">Your cart is empty.</p>
+    <p><strong>Total: $<span id="total-amount">0.00</span></strong></p>
+    <button id="checkout-button">Confirm Purchase</button>
   </main>
-<script>
-let cart = [];
-let totalAmount = 0;
 
-function loadCart() {
-  const cartContainer = document.getElementById('cart-items');
-  cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cartContainer.innerHTML = '';
-  totalAmount = 0;
+  <footer>
+    &copy; 2025 Spendless Shoes. All rights reserved.
+  </footer>
 
-  cart.forEach((item, index) => {
-    totalAmount += item.price;
-    const itemDiv = document.createElement('div');
-    itemDiv.innerHTML = `
-      ${item.name} - $${item.price.toFixed(2)}
-      <button onclick="removeFromCart(${index})">Remove</button>
-    `;
-    cartContainer.appendChild(itemDiv);
-  });
+  <script>
+    let cart = [];
+    let totalAmount = 0;
 
-  document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
-}
+    function renderCart() {
+      const cartContainer = document.getElementById('cart-items');
+      const emptyMsg = document.getElementById('empty-cart-msg');
+      cartContainer.innerHTML = '';
+      totalAmount = 0;
 
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  loadCart();
-}
+      if (cart.length === 0) {
+        emptyMsg.style.display = '';
+        document.getElementById('total-amount').textContent = '0.00';
+        return;
+      } else {
+        emptyMsg.style.display = 'none';
+      }
 
-document.getElementById('checkout-button').addEventListener('click', function() {
-  if (cart.length > 0) {
-    alert('Thank you for your purchase!');
-    cart = [];
-    localStorage.removeItem('cart');
-    loadCart();
-  } else {
-    alert('Your cart is empty.');
-  }
-});
+      cart.forEach((item, index) => {
+        totalAmount += item.price;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          ${item.name} - $${item.price.toFixed(2)}
+          <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(itemDiv);
+      });
 
-window.onload = loadCart;
-</script>
+      document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+    }
 
-  
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    document.getElementById('checkout-button').addEventListener('click', function() {
+      if (cart.length > 0) {
+        alert('Thank you for your purchase!');
+        cart = [];
+        localStorage.removeItem('cart');
+        renderCart();
+      } else {
+        alert('Your cart is empty.');
+      }
+    });
+
+    // Run on page load
+    window.onload = function() {
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
+      renderCart();
+    };
+
+    // Expose removeFromCart to global scope so inline onclick works
+    window.removeFromCart = removeFromCart;
+  </script>
 </body>
 </html>
