@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     <div class="container header-inner">
       <h1 class="logo">Spendless Shoes</h1>
       <p>WOMAN</p>
-      <input type="text" class="search-input" placeholder="Search..." />
+      <input type="text" class="search-input" id="search-input" placeholder="Search..." />
     </div>
   </header>
 
@@ -33,7 +34,6 @@
   <!-- Sidebar Filters -->
   <aside class="sidebar">
     <h2>Filters</h2>
-
     <div class="filter-section">
       <h3>Categories</h3>
       <label><input type="checkbox" /> Boots</label>
@@ -41,7 +41,6 @@
       <label><input type="checkbox" /> Flats</label>
       <label><input type="checkbox" /> Heels</label>
     </div>
-
     <div class="filter-section">
       <h3>Color</h3>
       <div class="color-options">
@@ -51,7 +50,6 @@
         <span class="color brown"></span>
       </div>
     </div>
-
     <div class="filter-section">
       <h3>Size</h3>
       <div class="size-grid">
@@ -59,7 +57,6 @@
         <span>9</span><span>10</span>
       </div>
     </div>
-
     <div class="filter-section">
       <h3>Price</h3>
       <label><input type="heeled Boot  " /> $0 - $50</label>
@@ -79,7 +76,6 @@
       <p class="price">$59.99</p>
       <button class="buy-now-btn" data-name="Heeled Boot" data-price="59.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/CasualFootwear.jpg" alt="Sneaker" />
       <h3>CasualFootwear</h3>
@@ -87,7 +83,6 @@
       <p class="price">$39.99</p>
       <button class="buy-now-btn" data-name="CasualFootwear" data-price="39.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/Woman.jpg" alt="Flat Shoe" />
       <h3>Flat Sandal</h3>
@@ -95,7 +90,6 @@
       <p class="price">$29.99</p>
       <button class="buy-now-btn" data-name="Flat Sandal" data-price="29.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/Shays shoes.jpg" alt="Heel" />
       <h3>Shaya Shoes</h3>
@@ -103,7 +97,6 @@
       <p class="price">$49.99</p>
       <button class="buy-now-btn" data-name="Shaya Shoes" data-price="49.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/Women's Lacoste.jpg" alt="Heel" />
       <h3>Women's Lacoste footwear</h3>
@@ -111,7 +104,6 @@
       <p class="price">$49.99</p>
       <button class="buy-now-btn" data-name="Women's Lacoste footwear" data-price="49.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/Hoka Bondi.jpg" alt="Heel" />
       <h3>hoka Bondi shoes</h3>
@@ -119,7 +111,6 @@
       <p class="price">$49.99</p>
       <button class="buy-now-btn" data-name="hoka Bondi shoes" data-price="49.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/Sneakers.jpg" alt="Heel" />
       <h3>Sneakers</h3>
@@ -127,7 +118,6 @@
       <p class="price">$49.99</p>
       <button class="buy-now-btn" data-name="Sneakers" data-price="49.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="stylishhill.jpg" alt="Heel" />
       <h3>Red Heels</h3>
@@ -135,7 +125,6 @@
       <p class="price">$49.99</p>
       <button class="buy-now-btn" data-name="Red Heels" data-price="49.99">Buy Now</button>
     </div>
-
     <div class="product-card">
       <img src="Women/heel2.jpg" alt="Heel" />
       <h3>Heels</h3>
@@ -156,9 +145,9 @@
     &copy; 2025 Spendless Shoes. All rights reserved.
   </footer>
 
-  <!-- Cart JavaScript -->
+  <!-- Cart + Search JavaScript -->
   <script>
-    // Initialize total amount and cart
+    // Cart Functionality
     let totalAmount = 0;
     let cart = [];
 
@@ -170,20 +159,17 @@
       document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
     }
 
-    // Function to update total amount
     function updateTotal(amount) {
       totalAmount += amount;
       document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
     }
 
-    // Function to add item to cart and save to localStorage
     function addToCart(name, price) {
       cart.push({ name, price });
       localStorage.setItem('cart', JSON.stringify(cart));
       updateTotal(price);
     }
 
-    // Add event listeners to all "Buy Now" buttons
     document.querySelectorAll('.buy-now-btn').forEach(button => {
       button.addEventListener('click', () => {
         const name = button.getAttribute('data-name');
@@ -192,14 +178,26 @@
       });
     });
 
-    // Checkout button functionality
     document.getElementById('checkout-button').addEventListener('click', () => {
       if (totalAmount > 0) {
-        // Redirect to checkout.html
         window.location.href = 'Checkout.html';
       } else {
         alert('Your cart is empty.');
       }
     });
+
+    // Search Functionality
+    document.getElementById('search-input').addEventListener('input', function() {
+      const searchValue = this.value.trim().toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        if (title.includes(searchValue)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
+</html>
