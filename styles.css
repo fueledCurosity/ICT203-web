@@ -293,4 +293,24 @@ nav ul li a:hover {
     font-size: 0.95rem;
     padding: 8px 16px;
   }
+  .footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0;
+  justify-content: center;
+}
+.footer-links li a {
+  text-decoration: none;
+  color: #00539C;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
 }
